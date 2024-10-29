@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('master_regionals', function (Blueprint $table) {
             $table->id();
-	    $table->string('regional_name', 128)->unique();
+            $table->string('name');
+            $table->string('code')->unique();
+            $table->text('description')->nullable();
             $table->timestamps();
-	    $table->softDeletes();
+            $table->softDeletes();
         });
     }
 
