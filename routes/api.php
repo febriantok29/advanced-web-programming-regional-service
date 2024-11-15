@@ -1,4 +1,8 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionalController;
+use App\Http\Controllers\CustomerController;
 
 Route::prefix('api')->group(function () {
     Route::get('regional', [RegionalController::class, 'index']);
@@ -7,6 +11,9 @@ Route::prefix('api')->group(function () {
     Route::put('regional/{id}', [RegionalController::class, 'update']);
     Route::delete('regional/{id}', [RegionalController::class, 'destroy']);
     Route::post('regional/import', [RegionalController::class, 'import']);
+
+    Route::get('customer', [CustomerController::class, 'index']);
+    Route::post('customer', [CustomerController::class, 'store']);
 });
 
 Route::middleware('api')
