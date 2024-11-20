@@ -10,9 +10,9 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">Welcome</div>
+        <div class="card-header">Febrianto Kabisatullah - 411221029</div>
         <div class="card-body">
-            This is the content of the home page.
+            Berikut WEB yang saya buat untuk mata kulia Pemrograman Web Lanjut dengan dosen pengampu Bapak M. Sandy
         </div>
     </div>
 @endsection
