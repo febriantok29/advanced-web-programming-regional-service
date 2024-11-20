@@ -60,7 +60,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::with('regional')->findOrFail($id);
-        return view('master.customer.show', compact('customer'));
+        $regionals = Regional::all();
+        return view('master.customer.show', compact('customer', 'regionals'));
     }
 
     /**

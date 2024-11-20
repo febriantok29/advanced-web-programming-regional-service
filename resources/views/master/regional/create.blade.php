@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
+@section('title', 'Add New Regional')
+
+@section('page_title', 'Tambah Regional Baru')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item active">Home</li>
+@endsection
+
 @section('content')
     <div class="container mt-4">
-        <h1>Tambah Regional Baru</h1>
         <form action="{{ route('regionals.store') }}" method="POST">
             @csrf
             <div class="form-group mb-3">

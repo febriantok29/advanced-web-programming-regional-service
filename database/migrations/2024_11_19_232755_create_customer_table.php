@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('m_customers', function (Blueprint $table) {
+        Schema::create('m_customers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('regional_id');
+            $table->unsignedBigInteger('regional_id')->nullable();
             $table->string('name');
             $table->string('code')->unique();
             $table->text('address')->nullable();
@@ -35,8 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('m_customers', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('m_customers');
     }
 };

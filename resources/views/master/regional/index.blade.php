@@ -1,17 +1,20 @@
 @extends('layouts.app')
 
+@section('title', 'Regional List')
+
+@section('page_title', 'Daftar Regional')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item active">Home</li>
+@endsection
+
 @section('content')
     <div class="container mt-4">
-        <h1 class="mb-4">Daftar Regional</h1>
         <a href="{{ route('regionals.create') }}" class="btn btn-primary mb-3">Tambah Regional Baru</a>
-
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
 
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered">
-                <thead class="thead-dark">
+                <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Regional</th>
@@ -28,6 +31,9 @@
                             <td>{{ $regional->code }}</td>
                             <td>{{ $regional->description }}</td>
                             <td>
+                                <a href="{{ route('regionals.show', $regional->id) }}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-eye"></i> Lihat
+                                </a>
                                 <a href="{{ route('regionals.edit', $regional->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
