@@ -22,6 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+
 Route::prefix('master')->group(function () {
     Route::resource('regionals', RegionalController::class);
     Route::resource('customers', CustomerController::class);

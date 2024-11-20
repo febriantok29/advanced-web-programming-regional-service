@@ -10,17 +10,25 @@ class Customer extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'master_customers';
+    protected $table = 'm_customers';
 
     protected $fillable = [
+        'regional_id',
         'name',
-        'date_of_birth',
-        'username',
-        'region_id'
+        'code',
+        'address',
+        'phone',
+        'email',
     ];
 
-    public function region()
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    public function regional()
     {
-        return $this->belongsTo(Regional::class, 'region_id');
+        return $this->belongsTo(Regional::class, 'regional_id');
     }
 }
