@@ -36,11 +36,21 @@ class RegionalController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'string|required',
-            'code' => 'required|unique:m_regionals',
-            'description' => 'nullable',
-        ]);
+        $rules = [
+            'name' => 'string|required|max:128',
+            'code' => 'required|regex:/^[a-zA-Z]+$/|unique:m_regionals|max:16',
+            'description' => 'nullable|max:255',
+        ];
+
+        $messages = [
+            'name.required' => 'Nama regional harus diisi.',
+            'code.required' => 'Kode regional harus diisi.',
+            'code.regex' => 'Kode regional harus berupa huruf.',
+            'code.unique' => 'Kode regional sudah digunakan, silakan gunakan kode lain.',
+            '*.max' => 'Panjang karakter :attribute tidak boleh melebihi :max. Silakan cek kembali.',
+        ];
+
+        $validatedData = $request->validate($rules, $messages);
 
         $regional = new Regional();
         $regional->name = $validatedData['name'];

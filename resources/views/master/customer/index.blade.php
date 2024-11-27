@@ -2,7 +2,7 @@
 
 @section('title', 'Customer')
 
-@section('page_title', 'Dafar Customer')
+@section('page_title', 'Daftar Customer')
 
 @section('breadcrumb')
     <li class="breadcrumb-item active">Home</li>
