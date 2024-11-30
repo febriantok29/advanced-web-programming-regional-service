@@ -30,4 +30,5 @@ Route::get('/home', function () {
 Route::prefix('master')->group(function () {
     Route::resource('regionals', RegionalController::class);
     Route::resource('customers', CustomerController::class);
+    Route::get('customer/{id}/pdf', [CustomerController::class, 'generatePDF'])->name('customers.pdf');
 });

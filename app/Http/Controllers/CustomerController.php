@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Master\Customer;
 use App\Models\Master\Regional;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CustomerController extends Controller
 {
@@ -75,6 +76,17 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         $regionals = Regional::all();
         return view('master.customer.edit', compact('customer', 'regionals'));
+    }
+
+    public function generatePDF($id)
+    {
+        $customer = Customer::with('regional')->findOrFail($id);
+        $pdf = Pdf::loadView('master.customer.pdf', compact('customer'));
+
+        $now = date('Y-m-d_H:i:s');
+        $fileName = $now . '_' . $customer->name . '.pdf';
+
+        return $pdf->download($fileName);
     }
 
     /**

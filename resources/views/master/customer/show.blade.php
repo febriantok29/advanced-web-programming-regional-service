@@ -58,6 +58,8 @@
             <label for="address">Alamat</label>
             <textarea name="address" class="form-control" readonly>{{ $customer->address }}</textarea>
         </div>
+
+        <a href="{{ route('customers.pdf', $customer->id) }}" class="btn btn-primary">Download PDF</a>
         <a href="{{ route('customers.index') }}" class="btn btn-secondary">Kembali</a>
     </div>
 @endsection
