@@ -13,7 +13,9 @@
         <div class="card">
             <div class="card-header">
                 <a href="{{ route('customers.create') }}" class="btn btn-primary">Tambah Customer</a>
+                <a href="{{ route('customers.excel') }}" class="btn btn-success">Export Excel</a>
             </div>
+
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>

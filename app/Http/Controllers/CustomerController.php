@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Master\Customer;
 use App\Models\Master\Regional;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\ContentExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
@@ -122,5 +124,13 @@ class CustomerController extends Controller
     {
         Customer::destroy($id);
         return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
+    }
+
+    public function generateExcel()
+    {
+        $currentDateTime = date('Y-m-d_H i:s');
+        $fileName = 'customers_' . $currentDateTime . '.xlsx';
+
+        return Excel::download(new ContentExport, $fileName);
     }
 }

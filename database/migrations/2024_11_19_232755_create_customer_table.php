@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('regional_id')->references('id')->on('m_regionals')->onDelete('set null');
+            $table->foreign('regional_id')->references('id')->on('m_regionals');
         });
     }
 
